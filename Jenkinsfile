@@ -3,10 +3,7 @@ remote.name = "node"
 remote.host = "13.233.32.176"
 remote.allowAnyHosts = true
 node {
-    withCredentials([usernamePassword(credentialsId: 'sshUserAcct', passwordVariable: 'password', usernameVariable: 'userName')]) {
-        remote.user = userName
-        remote.password = password
-
+  
         stage("SSH Steps Rocks!") {
             writeFile file: 'test.sh', text: 'ls'
             sshCommand remote: remote, command: 'for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done'
