@@ -1,16 +1,8 @@
 def remote = [:]
-remote.name = "node"
-remote.host = "13.233.32.176"
-remote.allowAnyHosts = true
-node {
-  
-
-        stage("SSH Steps Rocks!") {
-            writeFile file: 'test.sh', text: 'ls'
-            sshCommand remote: remote, command: 'for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done'
-            sshScript remote: remote, script: 'test.sh'
-            sshPut remote: remote, from: 'test.sh', into: '.'
-            sshGet remote: remote, from: 'test.sh', into: 'test_new.sh', override: true
-            sshRemove remote: remote, path: 'test.sh'
-        }
+    remote.name = 'target2'
+    remote.host = '13.233.32.176'
+    remote.allowAnyHosts = true
+    stage('Remote SSH') {
+      sshCommand remote: remote, command: "ls -lrt"
+      sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
     }
