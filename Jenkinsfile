@@ -1,1 +1,1 @@
-sh label: '', script: 'ls -lrt'
+sh label: '', returnStdout: true, script: 'echo \'this is my world\''
