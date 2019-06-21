@@ -7,7 +7,8 @@ pipeline {
                 sh '''
                     echo "Multiline shell steps works too"
                     ls -lah
-                    echo `pwd`
+                    ssh ec2-user@52.66.250.78
+                    aws s3 ls
                 '''
             }
         }
